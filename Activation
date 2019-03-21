@@ -1,0 +1,25 @@
+Sub Activation()
+
+Count = 1
+
+while Gettagval("ATIVATION.E_WATT") < 24
+
+	if Count = 1 then
+		Settagval "ATIVATION.기준값", 8.0E-8
+	end if
+
+	Count = Count + 1
+	if Count >= 300 then
+		If Gettagval("ATIVATION.기준값") >= Gettagval("ATIVATION.VACUUM") then
+
+			Settagval "ATIVATION.E_WATT", Gettagval("ATIVATION.E_WATT") + 0.5
+
+		end if	
+		Count = 1
+
+	end if	
+
+sleep(1000)
+wend
+
+End Sub
